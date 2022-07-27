@@ -9,7 +9,7 @@ import app.mozarty.movies.viewmodel.MovieListViewModel.ViewState.*
 @Composable
 fun DiscoverLayout(movieListViewModel: MovieListViewModel) {
 
-    val viewState by movieListViewModel.getViewState().observeAsState()
+    val viewState by movieListViewModel.getViewState().observeAsState(initial = Loading)
 
     when (viewState) {
         Loading -> {}
@@ -18,6 +18,6 @@ fun DiscoverLayout(movieListViewModel: MovieListViewModel) {
         Success -> {
             MovieList(movieListViewModel)
         }
-        null, Error -> {}
+        Error -> {}
     }
 }
