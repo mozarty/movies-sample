@@ -4,7 +4,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import app.mozarty.movies.data.dto.MovieDetails
 import app.mozarty.movies.data.dto.MovieListResultsPage
 import app.mozarty.movies.data.dto.MovieOutline
+import app.mozarty.movies.data.dto.ServiceConfig
 import app.mozarty.movies.data.repository.MovieRepository
+import app.mozarty.movies.data.service.ConfigService
 import app.mozarty.movies.data.service.MovieService
 import app.mozarty.movies.data.usecases.ListMoviesUseCaseImpl
 import app.mozarty.movies.viewmodel.MovieListViewModel
@@ -13,7 +15,14 @@ import app.mozarty.movies.viewmodel.MovieListViewModel
 class SampleViewModelProvider : PreviewParameterProvider<MovieListViewModel> {
     override val values: Sequence<MovieListViewModel>
         get() = sequenceOf(
-            MovieListViewModel(ListMoviesUseCaseImpl(MovieRepository(SampleMovieService())))
+            MovieListViewModel(
+                ListMoviesUseCaseImpl(
+                    MovieRepository(
+                        SampleMovieService(),
+                        SampleConfigService()
+                    )
+                )
+            )
         )
 }
 
@@ -32,6 +41,12 @@ class SampleMovieService : MovieService {
         apiKey: String,
         language: String
     ): MovieDetails {
+        TODO("Not yet implemented")
+    }
+}
+
+class SampleConfigService : ConfigService {
+    override suspend fun getConfiguration(apiKey: String): ServiceConfig {
         TODO("Not yet implemented")
     }
 }

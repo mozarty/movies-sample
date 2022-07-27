@@ -11,6 +11,15 @@ class ListMoviesUseCaseImpl(private val movieRepository: MovieRepository) : List
     override suspend fun invoke(page: Int): Result<MovieListResultsPage> {
         try {
             val movieListResponse = movieRepository.listMovies(page)
+
+            val serviceConfig = movieRepository.getServiceConfig()
+            serviceConfig?.let {
+                //update poster URL
+                movieListResponse.results.map {
+                    it.posterPath =
+                        serviceConfig.images.secureBaseURL + serviceConfig.images.posterSizes.last() + it.posterPath
+                }
+            }
             return Result.success(movieListResponse)
 
         } catch (e: Throwable) {

@@ -11,7 +11,7 @@ data class MovieOutline(
     @SerializedName("original_title") val originalTitle: String,
     val overview: String,
     val popularity: String,
-    @SerializedName("poster_path") val posterPath: String,
+    @SerializedName("poster_path") var posterPath: String,
     @SerializedName("release_date") val releaseDate: String,
     val title: String,
     @SerializedName("video") val video: Boolean,

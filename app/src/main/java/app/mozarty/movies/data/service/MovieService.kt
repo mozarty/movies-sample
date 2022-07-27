@@ -2,6 +2,7 @@ package app.mozarty.movies.data.service
 
 import app.mozarty.movies.data.dto.MovieDetails
 import app.mozarty.movies.data.dto.MovieListResultsPage
+import app.mozarty.movies.data.dto.ServiceConfig
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -22,7 +23,6 @@ interface MovieService {
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String = "en_US"
     ): MovieDetails
-
 
     companion object {
         const val API_KEY = "c9856d0cb57c3f14bf75bdc6c063b8f3"

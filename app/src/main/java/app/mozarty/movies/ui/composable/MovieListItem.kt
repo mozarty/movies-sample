@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import app.mozarty.movies.R
 import app.mozarty.movies.data.dto.MovieOutline
 import app.mozarty.movies.ui.theme.MoviesSampleTheme
-import com.skydoves.landscapist.glide.GlideImage
+import com.skydoves.landscapist.coil.CoilImage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,7 +38,7 @@ fun MovieListItem(movie: MovieOutline) {
                 .fillMaxWidth()
                 .align(Alignment.Start)
         ) {
-            GlideImage(
+            CoilImage(
                 imageModel = movie.posterPath,
                 // Crop, Fit, Inside, FillHeight, FillWidth, None
                 contentScale = ContentScale.FillWidth,

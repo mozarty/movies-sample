@@ -95,7 +95,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttp_logging_version")
 
     //Glide
-    implementation "com.github.skydoves:landscapist-glide:$landscapist_version"
+    implementation "com.github.skydoves:landscapist-coil:$landscapist_version"
 
     // unit testing
     testImplementation "junit:junit:$junit"
