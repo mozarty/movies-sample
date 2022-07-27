@@ -3,4 +3,8 @@
     <string name="movie_rating_format">%s (%s votes)</string>
 
     <string name="movie_release_format">Released on %s</string>
+
+
+    <string name="body_error_list">Sorry, The app encountered an Error\n check you connection and try again</string>
+    <string name="body_loading_list">Getting data...</string>
 </resources>

@@ -16,9 +16,7 @@ import androidx.compose.ui.unit.dp
 import app.mozarty.movies.R
 import app.mozarty.movies.details.data.dto.MovieDetails
 import app.mozarty.movies.ui.composable.SampleMovieDetailsProvider
-import app.mozarty.movies.ui.composable.SampleMovieViewModelProvider
 import app.mozarty.movies.ui.theme.MoviesSampleTheme
-import app.mozarty.movies.viewmodel.MoviesViewModel
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.coil.CoilImage
 
@@ -121,7 +119,7 @@ fun MovieDetailsScreen(movie: MovieDetails) {
         }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
 fun MovieDetailsPreviewDark(
     @PreviewParameter(

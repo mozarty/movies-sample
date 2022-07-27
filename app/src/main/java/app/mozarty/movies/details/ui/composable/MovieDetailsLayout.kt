@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
+import app.mozarty.movies.ui.composable.LoadingState
 import app.mozarty.movies.viewmodel.MoviesViewModel
 
 @Composable
@@ -13,7 +14,9 @@ fun MovieDetailsLayout(moviesViewModel: MoviesViewModel, navController: NavHostC
         .observeAsState(initial = MoviesViewModel.ViewState.Loading)
 
     when (viewState) {
-        MoviesViewModel.ViewState.Loading -> {}
+        MoviesViewModel.ViewState.Loading -> {
+            LoadingState()
+        }
 
 
         MoviesViewModel.ViewState.Success -> {
@@ -24,7 +27,9 @@ fun MovieDetailsLayout(moviesViewModel: MoviesViewModel, navController: NavHostC
                 MovieDetailsScreen(movie)
             }
         }
-        MoviesViewModel.ViewState.Error -> {}
+        MoviesViewModel.ViewState.Error -> {
+            MovieDetailsErrorState()
+        }
     }
 
 

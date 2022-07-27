@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
+import app.mozarty.movies.ui.composable.LoadingState
 import app.mozarty.movies.viewmodel.MoviesViewModel
 import app.mozarty.movies.viewmodel.MoviesViewModel.ViewState.*
 
@@ -13,12 +14,14 @@ fun DiscoverLayout(moviesViewModel: MoviesViewModel, navController: NavHostContr
     val viewState by moviesViewModel.getDiscoverViewState().observeAsState(initial = Loading)
 
     when (viewState) {
-        Loading -> {}
-
-
-        Success -> {
-            MovieList(moviesViewModel,navController)
+        Loading -> {
+            LoadingState()
         }
-        Error -> {}
+        Success -> {
+            MovieList(moviesViewModel, navController)
+        }
+        Error -> {
+            MovieListErrorState()
+        }
     }
 }
