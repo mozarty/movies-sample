@@ -1,10 +1,10 @@
 package app.mozarty.movies.data.repository
 
-import app.mozarty.movies.data.dto.MovieDetails
-import app.mozarty.movies.data.dto.MovieListResultsPage
 import app.mozarty.movies.data.dto.ServiceConfig
 import app.mozarty.movies.data.service.ConfigService
 import app.mozarty.movies.data.service.MovieService
+import app.mozarty.movies.details.data.dto.MovieDetails
+import app.mozarty.movies.discover.data.dto.MovieListResultsPage
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -35,4 +35,9 @@ class MovieRepository @Inject constructor(
         updateConfigIfNeeded()
         return movieService.getMovieDetails(movieID)
     }
+
+    fun generateFullPosterPath(
+        serviceConfig: ServiceConfig,
+        posterEndURL: String
+    ) = serviceConfig.images.secureBaseURL + serviceConfig.images.posterSizes.last() + posterEndURL
 }

@@ -1,4 +1,4 @@
-package app.mozarty.movies.ui.composable
+package app.mozarty.movies.discover.ui.composable
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -17,15 +17,20 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import app.mozarty.movies.R
-import app.mozarty.movies.data.dto.MovieOutline
+import app.mozarty.movies.discover.data.dto.MovieOutline
+import app.mozarty.movies.ui.composable.SampleMovieOutlineProvider
+import app.mozarty.movies.ui.composable.TestTags
+import app.mozarty.movies.ui.navigation.NavigationDestinations
 import app.mozarty.movies.ui.theme.MoviesSampleTheme
 import com.skydoves.landscapist.coil.CoilImage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieListItem(movie: MovieOutline) {
+fun MovieListItem(movie: MovieOutline, onClick: () -> Unit) {
     Card(
+        onClick = onClick,
         modifier = Modifier
             .padding(all = 8.dp)
             .fillMaxWidth()
@@ -109,7 +114,7 @@ fun MovieListItem(movie: MovieOutline) {
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun MovieListItemPreviewDark(
     @PreviewParameter(
@@ -118,11 +123,11 @@ fun MovieListItemPreviewDark(
     ) movie: MovieOutline
 ) {
     MoviesSampleTheme(true) {
-        MovieListItem(movie)
+        MovieListItem(movie) { }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun MovieListItemPreview(
     @PreviewParameter(
@@ -131,6 +136,6 @@ fun MovieListItemPreview(
     ) movie: MovieOutline
 ) {
     MoviesSampleTheme(false) {
-        MovieListItem(movie)
+        MovieListItem(movie) { }
     }
 }

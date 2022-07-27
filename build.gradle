@@ -34,6 +34,7 @@ buildscript {
         okhttp_version = "4.9.3"
         okhttp_logging_version = "4.10.0"
 
+        nav_version = "2.5.0"
         compose_version = '1.2.0'
         compose_ui_version = '1.2.0-rc03'
         compose_activty = "1.4.0"
@@ -42,7 +43,6 @@ buildscript {
         compose_hilt = "1.0.0"
 
         landscapist_version = "1.5.3"
-
         timber_version = "5.0.1"
 
         // Test dependencies

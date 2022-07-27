@@ -1,4 +1,4 @@
-package app.mozarty.movies.data.dto
+package app.mozarty.movies.discover.data.dto
 
 import com.google.gson.annotations.SerializedName
 

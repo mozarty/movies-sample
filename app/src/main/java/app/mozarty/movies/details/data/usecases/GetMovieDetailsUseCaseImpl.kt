@@ -1,8 +1,8 @@
-package app.mozarty.movies.data.usecases
+package app.mozarty.movies.details.data.usecases
 
-import app.mozarty.movies.data.dto.MovieDetails
 import app.mozarty.movies.data.error.MovieServiceException
 import app.mozarty.movies.data.repository.MovieRepository
+import app.mozarty.movies.details.data.dto.MovieDetails
 import retrofit2.HttpException
 
 class GetMovieDetailsUseCaseImpl(private val movieRepository: MovieRepository) :
@@ -10,7 +10,16 @@ class GetMovieDetailsUseCaseImpl(private val movieRepository: MovieRepository) :
 
     override suspend fun invoke(movieID: String): Result<MovieDetails> {
         try {
+            val serviceConfig = movieRepository.getServiceConfig()
             val movieDetailsResponse = movieRepository.getMovieDetails(movieID)
+            serviceConfig?.let {
+                //update poster URL
+            movieDetailsResponse.posterPath =
+                movieRepository.generateFullPosterPath(
+                    serviceConfig,
+                    movieDetailsResponse.posterPath
+                )
+            }
             return Result.success(movieDetailsResponse)
 
         } catch (e: Throwable) {

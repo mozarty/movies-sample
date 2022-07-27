@@ -1,8 +1,7 @@
 package app.mozarty.movies.data.service
 
-import app.mozarty.movies.data.dto.MovieDetails
-import app.mozarty.movies.data.dto.MovieListResultsPage
-import app.mozarty.movies.data.dto.ServiceConfig
+import app.mozarty.movies.details.data.dto.MovieDetails
+import app.mozarty.movies.discover.data.dto.MovieListResultsPage
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

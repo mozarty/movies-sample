@@ -1,4 +1,4 @@
-package app.mozarty.movies.data.dto
+package app.mozarty.movies.details.data.dto
 
 import com.google.gson.annotations.SerializedName
 
@@ -13,7 +13,7 @@ data class MovieDetails(
     @SerializedName("original_title") val originalTitle: String,
     val overview: String,
     val popularity: String,
-    @SerializedName("poster_path") val posterPath: String,
+    @SerializedName("poster_path") var posterPath: String,
     @SerializedName("backdrop_path") val backdropPath: String,
     @SerializedName("release_date") val releaseDate: String,
 

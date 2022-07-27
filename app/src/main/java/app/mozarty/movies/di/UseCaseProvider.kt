@@ -1,10 +1,10 @@
 package app.mozarty.movies.di
 
 import app.mozarty.movies.data.repository.MovieRepository
-import app.mozarty.movies.data.usecases.GetMovieDetailsUseCase
-import app.mozarty.movies.data.usecases.GetMovieDetailsUseCaseImpl
-import app.mozarty.movies.data.usecases.ListMoviesUseCase
-import app.mozarty.movies.data.usecases.ListMoviesUseCaseImpl
+import app.mozarty.movies.details.data.usecases.GetMovieDetailsUseCase
+import app.mozarty.movies.details.data.usecases.GetMovieDetailsUseCaseImpl
+import app.mozarty.movies.discover.data.usecases.ListMoviesUseCase
+import app.mozarty.movies.discover.data.usecases.ListMoviesUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
