@@ -3,9 +3,11 @@
 A movie browsing app illustrating Android development best practices.
 
 This sample showcases:
+* Implement UI according to Material Design 3 specs
 * Compose working in a new app: including integration with strings, resources, and themes and styles.
 * Integration with a clean architecture based on MVVM and Jetpack libraries.
-* Dependancy Injection with Hilt
+* Dependency Injection with Hilt
+* Multi-module project
 * Network integration with retrofit/okhttp
 * Tests integrating with compose and Hilt
 

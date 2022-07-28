@@ -8,16 +8,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Surface
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
+import app.mozarty.movies.details.viewmodel.MovieDetailsViewModel
+import app.mozarty.movies.discover.viewmodel.DiscoverViewModel
 import app.mozarty.movies.ui.navigation.navHost
 import app.mozarty.movies.ui.theme.MoviesSampleTheme
-import app.mozarty.movies.viewmodel.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MoviesActivity : ComponentActivity() {
 
 
-    private val moviesViewModel: MoviesViewModel by viewModels()
+    private val discoverViewModel: DiscoverViewModel by viewModels()
+    private val movieDetailsViewModel: MovieDetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +30,7 @@ class MoviesActivity : ComponentActivity() {
                         .fillMaxWidth(),
                     color = MaterialTheme.colorScheme.surface,
                 ) {
-                    navHost(moviesViewModel = moviesViewModel)
+                    navHost(discoverViewModel, movieDetailsViewModel)
                 }
             }
         }

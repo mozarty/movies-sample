@@ -1,16 +1,19 @@
 package app.mozarty.movies.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import app.mozarty.movies.details.ui.composable.MovieDetailsLayout
-import app.mozarty.movies.discover.ui.composable.DiscoverLayout
-import app.mozarty.movies.viewmodel.MoviesViewModel
+import androidx.navigation.navArgument
+import app.mozarty.movies.details.ui.MovieDetailsLayout
+import app.mozarty.movies.details.viewmodel.MovieDetailsViewModel
+import app.mozarty.movies.discover.ui.DiscoverLayout
+import app.mozarty.movies.discover.viewmodel.DiscoverViewModel
 
 
 @Composable
-fun navHost(moviesViewModel: MoviesViewModel) {
+fun navHost(discoverViewModel: DiscoverViewModel, movieDetailsViewModel: MovieDetailsViewModel) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
@@ -18,20 +21,20 @@ fun navHost(moviesViewModel: MoviesViewModel) {
     ) {
         composable(NavigationDestinations.discoverDestination) {
             DiscoverLayout(
-                moviesViewModel,
+                discoverViewModel,
                 navController
             )
         }
-        composable(NavigationDestinations.detailsDestination) {
+        composable(
+            NavigationDestinations.detailsDestination,
+            arguments = listOf(navArgument(NavigationArguments.movieID) {
+                type = NavType.StringType
+            })
+        ) {
             MovieDetailsLayout(
-                moviesViewModel, navController
+                movieDetailsViewModel,
+                it.arguments?.getString(NavigationArguments.movieID).orEmpty()
             )
         }
     }
-}
-
-
-object NavigationDestinations {
-    const val discoverDestination = "discover"
-    const val detailsDestination = "details"
 }
