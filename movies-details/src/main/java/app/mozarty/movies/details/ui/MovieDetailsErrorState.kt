@@ -25,7 +25,7 @@ fun MovieDetailsErrorState() {
         modifier = Modifier
             .fillMaxSize()
             .padding(all = 8.dp)
-            .testTag(TestTags.EmptyList),
+            .testTag(TestTags.ErrorState),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

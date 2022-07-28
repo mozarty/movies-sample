@@ -56,7 +56,6 @@ dependencies {
     implementation "androidx.compose.runtime:runtime-livedata:$compose_ui_version"
     implementation "androidx.activity:activity-compose:$compose_activty"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_lifecycle"
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 

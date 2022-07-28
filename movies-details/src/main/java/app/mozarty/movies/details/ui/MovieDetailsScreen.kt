@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,108 +16,112 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import app.mozarty.movies.data.dto.MovieDetails
 import app.mozarty.movies.ui.SampleMovieDetailsProvider
+import app.mozarty.movies.ui.TestTags
 import app.mozarty.movies.ui.theme.MoviesSampleTheme
+import app.mozarty.movies_sample_core.R
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.coil.CoilImage
-import app.mozarty.movies_sample_core.R
 
 @Composable
 fun MovieDetailsScreen(movie: MovieDetails) {
 
-        Box(
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .testTag(TestTags.DetailsScreen)
+    ) {
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top,
             modifier = Modifier
-                .fillMaxSize()
+                .padding(16.dp)
         ) {
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top,
+            CoilImage(
+                imageModel = movie.posterPath,
+                // Crop, Fit, Inside, FillHeight, FillWidth, None
+                contentScale = ContentScale.FillBounds,
+                circularReveal = CircularReveal(500),
                 modifier = Modifier
-                    .padding(16.dp)
-            ) {
-                CoilImage(
-                    imageModel = movie.posterPath,
-                    // Crop, Fit, Inside, FillHeight, FillWidth, None
-                    contentScale = ContentScale.FillBounds,
-                    circularReveal = CircularReveal(500),
-                    modifier = Modifier
-                        .fillMaxWidth(0.5f)
-                        .fillMaxHeight(0.4f),
-                    // shows a placeholder while loading the image.
-                    previewPlaceholder = R.drawable.ic_movie_poster,
-                    // shows an error ImageBitmap when the request failed
-                    failure = {
-                        Image(
-                            painter = painterResource(R.drawable.ic_movie_poster),
-                            contentDescription = ""
-                        )
-                    },
-                    loading = {
-                        Image(
-                            painter = painterResource(R.drawable.ic_movie_poster),
-                            contentDescription = ""
-                        )
-                    },
-
-                    )
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = movie.title,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Row(
-                    modifier = Modifier
-                        .align(Alignment.Start)
-                ) {
-
-
+                    .fillMaxWidth(0.5f)
+                    .fillMaxHeight(0.4f),
+                // shows a placeholder while loading the image.
+                previewPlaceholder = R.drawable.ic_movie_poster,
+                // shows an error ImageBitmap when the request failed
+                failure = {
                     Image(
-                        painter = painterResource(R.drawable.ic_baseline_star_24),
-                        modifier = Modifier
-                            .width(24.dp)
-                            .height(24.dp)
-                            .align(Alignment.CenterVertically)
-                            .padding(end = 2.dp),
+                        painter = painterResource(R.drawable.ic_movie_poster),
                         contentDescription = ""
                     )
-                    Text(
-                        text = stringResource(
-                            id = R.string.movie_rating_format,
-                            movie.score,
-                            movie.voteCount
-                        ),
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onBackground
+                },
+                loading = {
+                    Image(
+                        painter = painterResource(R.drawable.ic_movie_poster),
+                        contentDescription = ""
                     )
+                },
 
-                }
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
+                )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag(TestTags.MovieTitle),
+                text = movie.title,
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                modifier = Modifier
+                    .align(Alignment.Start)
+            ) {
+
+
+                Image(
+                    painter = painterResource(R.drawable.ic_baseline_star_24),
                     modifier = Modifier
-                        .align(Alignment.Start),
+                        .width(24.dp)
+                        .height(24.dp)
+                        .align(Alignment.CenterVertically)
+                        .padding(end = 2.dp),
+                    contentDescription = ""
+                )
+                Text(
                     text = stringResource(
-                        id = R.string.movie_release_format,
-                        movie.releaseDate
+                        id = R.string.movie_rating_format,
+                        movie.score,
+                        movie.voteCount
                     ),
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onBackground
                 )
 
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = movie.overview,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-
             }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                modifier = Modifier
+                    .align(Alignment.Start),
+                text = stringResource(
+                    id = R.string.movie_release_format,
+                    movie.releaseDate
+                ),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = movie.overview,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+
         }
+    }
 }
 
 @Preview(showBackground = false)

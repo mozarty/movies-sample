@@ -31,18 +31,6 @@ class SampleMovieService : MovieService {
 
 }
 
-class SampleConfigService : ConfigService {
-    override suspend fun getConfiguration(apiKey: String): ServiceConfig {
-        return ServiceConfig(
-            ImageConfig(
-                baseURL = "",
-                secureBaseURL = "",
-                posterSizes = emptyList()
-            )
-        )
-    }
-}
-
 
 class SampleMovieOutlineProvider : PreviewParameterProvider<MovieOutline> {
     override val values: Sequence<MovieOutline>

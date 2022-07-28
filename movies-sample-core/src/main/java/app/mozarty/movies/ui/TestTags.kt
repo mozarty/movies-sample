@@ -4,6 +4,8 @@ object TestTags {
 
     const val MovieList = "MovieList"
     const val MovieListItem = "MovieListItem"
-
-    const val EmptyList = "EmptyList"
+    const val DetailsScreen = "DetailsScreen"
+    const val ErrorState = "ErrorState"
+    const val LoadingState = "LoadingState"
+    const val MovieTitle = "MovieTitle"
 }

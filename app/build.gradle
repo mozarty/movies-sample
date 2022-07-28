@@ -63,12 +63,24 @@ dependencies {
     implementation "androidx.compose.runtime:runtime-livedata:$compose_ui_version"
     implementation "androidx.activity:activity-compose:$compose_activty"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_lifecycle"
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
     //Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
+
+    // instrumentation & UI testing
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
+    androidTestImplementation "androidx.test:runner:$test_runner"
+    androidTestImplementation "androidx.test:rules:$test_rules"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_core"
+    androidTestImplementation "com.github.tmurakami:dexopener:$dexopener"
+    androidTestImplementation "org.mockito.kotlin:mockito-kotlin:$mockito_kotlin"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_android"
+    androidTestImplementation "io.kotlintest:kotlintest:$kotlinTest"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
 }
 
 kapt {

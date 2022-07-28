@@ -23,7 +23,7 @@ fun LoadingState() {
         modifier = Modifier
             .fillMaxSize()
             .padding(all = 8.dp)
-            .testTag(TestTags.EmptyList),
+            .testTag(TestTags.LoadingState),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
