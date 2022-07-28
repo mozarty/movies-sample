@@ -40,6 +40,7 @@ class MovieRepository @Inject constructor(
         }
     }
 
+    @Throws(MovieException::class)
     suspend fun listMovies(page: Int): MovieListResultsPage {
         try {
             updateConfigIfNeeded()
@@ -59,6 +60,7 @@ class MovieRepository @Inject constructor(
     }
 
 
+    @Throws(MovieException::class)
     suspend fun getMovieDetails(movieID: String): MovieDetails {
         try {
             updateConfigIfNeeded()

@@ -65,4 +65,15 @@ dependencies {
 
     //Landscapist
     implementation "com.github.skydoves:landscapist-coil:$landscapist_version"
+
+
+    // unit testing
+    testImplementation "junit:junit:$junit"
+    testImplementation "org.mockito:mockito-core:$mockito_kotlin"
+    testImplementation "org.mockito:mockito-inline:$mockito_kotlin"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockito_kotlin"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    testImplementation "androidx.arch.core:core-testing:$arch_lifecycle_core_testing"
+    testImplementation "org.assertj:assertj-core:$assertj_core"
+    testImplementation "io.kotlintest:kotlintest:$kotlinTest"
 }

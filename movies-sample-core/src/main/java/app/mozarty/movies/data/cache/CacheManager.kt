@@ -28,7 +28,7 @@ class CacheManager @Inject constructor(@ApplicationContext private val applicati
     fun get(cacheKey: String): Result<String> {
         val cacheMagAge = sharedPreferences.getLong(cacheKey + CACHE_MAX_AGE_IN_DAYS, -1)
         if (cacheMagAge > System.currentTimeMillis()) {
-            val value = sharedPreferences.getString(cacheKey, null)
+            val value = sharedPreferences.getString(cacheKey, "")
             return if(value.isNullOrBlank()){
                 Result.failure(EmptyStackException())
             }else{
