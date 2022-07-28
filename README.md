@@ -9,7 +9,7 @@ This sample showcases:
 * Dependency Injection with Hilt
 * Multi-module project
 * Network integration with retrofit/okhttp
-* Tests integrating with compose and Hilt
+* Unit/UI Tests integrating with compose and Hilt
 
 
 ## Screenshots
